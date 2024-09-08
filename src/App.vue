@@ -1,26 +1,74 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Tienda Bit-Game</h1>
+  <div class="celeste">
+    <p class="uno">¡Bienvenido!</p>
+    <hr>
+    <p class="dos">A continuacion encontrarás la lista de los juegos que prefieres</p>
+  </div>
+  <TablaComponente @borrar="eliminarJuego" :games="games" titulo="TITULO TABLA"/>
+  <TablaComponente :games="frutas" :titulo="nombre"/>
+  <TablaComponente :games="verduras"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TablaComponente from './components/TablaComponente.vue';
+export default{
+    name:'App',
+    components:{TablaComponente},
+    data(){
+    return{
+      games:["Arena of valor", "Pokemon Unite", "Donkey Kong", "Heroes of the storm", "Valorant"],
+      frutas: ['banana', 'manzana'],
+      verduras: ['papa', 'zanahoria', 'zapallo', 'acelga'],
+      nombre: 'La tabla de las frutas, esto es para mi, no forma parte de la prueba'
+      };
+    },
+    methods: {
+      eliminarJuego(index) {
+        console.log('Eliminando...', this.games[index]);
+        this.games.splice(index, 1);
+      }
+    }
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+    
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+h1, table{
+  background-color: black;
+  color: white;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+.celeste{
+  background-color: rgb(95, 214, 235);
+  align-content: center;
+}
+
+.dos{
+  font-size: 12px;
+}
+
+p{
+  padding-left: 20px;
+}
+
+button{
+  background-color: rgb(190, 15, 15);
+  color: white;
+  height: 25px;
+}
+
+table{
+  margin: 0 auto;
+  td{
+    width: 20cqw;
+    height: 30px;
+  }
+}
+
+.gato{
+  width: 20px;
 }
 </style>
